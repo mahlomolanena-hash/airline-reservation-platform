@@ -1,0 +1,15 @@
+# Prod profile: PostgreSQL, config externalized via env vars — never commit real secrets
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/airline}
+    username: ${DB_USERNAME:airline_user}
+    password: ${DB_PASSWORD:changeme}
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+logging:
+  level:
+    com.example.airline: INFO
